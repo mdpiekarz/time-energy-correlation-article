@@ -1,0 +1,11 @@
+# time-energy-correlation-article
+The repository contains experimental data for the article: "Time-Energy Correlation for Multithreaded Matrix Factorizations."
+====
+
+Testing was done on a machine with two Intel® Xeon® Gold 5218R processors with 20 cores each, and included three MKL implementations on multi-core machines for non-pivoting LU, pivoting LU and Cholesky factorization run using the DVFS technique for different clock speeds and different number of threads.
+
+The `LU`, `LUPiv`, `Cholesky` catalogs contain experimental results for non-pivoting LU factoring, pivoting LU factoring and Cholesky factoring algorithms, respectively. In each directory we have subdirectories `I` and `II` with the results of the first round of experiments and the second round, respectively. In the first round, the experiment covered the clock frequencies of 0.8 GHz, 1.1 GHz, 1.4 GHz, 1.7 GHz and 2.1 GHz located in the `f800`, `f1100`, `f1400`, `f1700` and `f2100` subdirectories respectively. The experiment for each frequency was repeated 4 or 5 times (tests for a single experiment are in the catalog with sample number: `1`,`2`,`3`,`4` and `5` respectively). The tests in the second round looked similar, except that the following frequencies were tested: 1.6 GHz, 1.8 GHz, 1.9 GHz and 2.0 GHz.
+
+The directory with a single experiment contains two files with energy data (the measurement was carried out every second and recorded in successive lines): files named e.g. `energia800` (`e1-1600`) contain measurements of the algorithm operation with 1 active thread, while files named `energia800w` (`e-1600`) contain measurements of algorithms running consecutively for 10, 20, 30, 40 threads, respectively. In the following columns we have: sequence number (`n`), time stamp (`timestamp`), energy consumed by 1 processor in Joule (`:0/package-0/CumulEn[J]`), instantaneous power consumption by the first processor in Watt (`:0/package- 0/InstPow[W]`), first processor memory energy consumption (`:0:0/dram/CumulEn[J]`), first processor instantaneous memory power consumption (`:0:0/dram/InstPow[W]`), next 4 columns similarly describe the data for the second processor.
+
+In addition, in the directory with a single test, there are 5 files with start and stop timestamps of individual algorithms for 1 thread, 10, 20, 30 and 40 threads, respectively.
